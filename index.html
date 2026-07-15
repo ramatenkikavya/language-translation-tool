@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translation Tool</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🌍 Language Translation Tool</h1>
+
+    <div class="card">
+
+        <label>Enter Text</label>
+        <textarea id="inputText" placeholder="Type text here..."></textarea>
+
+        <div class="row">
+
+            <div class="column">
+                <label>From</label>
+                <select id="sourceLanguage">
+                    {% for code, language in languages.items() %}
+                    <option value="{{ code }}">{{ language }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="column">
+                <label>To</label>
+                <select id="targetLanguage">
+                    {% for code, language in languages.items() %}
+                    <option value="{{ code }}">{{ language }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+
+        <button onclick="translateText()">Translate</button>
+
+        <h3>Translated Text</h3>
+
+        <textarea id="outputText" readonly></textarea>
+
+        <div class="buttons">
+
+            <button onclick="copyText()">Copy</button>
+
+            <button onclick="speakText()">🔊 Speak</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
